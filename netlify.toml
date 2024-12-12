@@ -1,0 +1,6 @@
+[build]
+  functions = "netlify/functions"  # Carpeta donde están tus funciones
+
+[[functions]]
+  directory = "netlify/functions"  # Especifica el directorio de funciones
+  runtime = "nodejs16.x"  # Usa la versión de Node.js adecuada
