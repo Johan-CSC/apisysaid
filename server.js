@@ -31,7 +31,6 @@ const requiredFields = [
 const getSysAidCookies = async () => {
     const browser = await puppeteer.launch({
         headless: true,
-        executablePath: '/usr/bin/google-chrome', // Ruta de Google Chrome en tu servidor (Render o similar)
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
     const page = await browser.newPage();

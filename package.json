@@ -3,17 +3,15 @@
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
-"scripts": {
-    "build": "apt-get update && apt-get install -y wget gnupg && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt-get install -y ./google-chrome-stable_current_amd64.deb",
+  "scripts": {
     "start": "node server.js"
-},
-
+  },
   "dependencies": {
     "axios": "^1.7.8",
     "axios-debug-log": "^1.0.0",
     "express": "^4.21.1",
     "node-fetch": "^3.3.2",
-    "puppeteer": "^23.9.0",
+    "puppeteer": "^23.10.4",
     "qs": "^6.13.1",
     "xlsx": "^0.18.5",
     "xml2js": "^0.6.2"
