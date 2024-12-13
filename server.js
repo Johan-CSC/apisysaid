@@ -3,7 +3,7 @@ import express from 'express';
 import axios from 'axios';
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;  // Usar el puerto dinámico proporcionado por Render
 
 // URL base de SysAid
 const sysaidBaseUrl = 'https://bionordiccsc.sysaidit.com';
@@ -95,6 +95,11 @@ const extractFields = (data) => {
         return extracted;
     });
 };
+
+// Ruta raíz para comprobar que el servidor funciona
+app.get('/', (req, res) => {
+  res.send('¡Servidor funcionando!');
+});
 
 // Endpoint para obtener los SR
 app.get('/api/sysaid/sr', async (req, res) => {
