@@ -1,9 +1,0 @@
-[build]
-  functions = "netlify/functions"  # Carpeta donde están tus funciones
-
-[functions]
-  node_bundler = "esbuild"        # Especifica el bundler para Node.js
-  included_files = ["server.js"] # Asegúrate de incluir este archivo si es relevante
-
-[functions.environment]
-  NODE_VERSION = "16"
