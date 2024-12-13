@@ -29,7 +29,10 @@ const requiredFields = [
 
 // Función para obtener las cookies después del inicio de sesión
 const getSysAidCookies = async () => {
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({
+        headless: true, 
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     const page = await browser.newPage();
 
     await page.goto('https://bionordiccsc.sysaidit.com/Login.jsp?manual=true');
