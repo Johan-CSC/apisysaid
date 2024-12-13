@@ -1,6 +1,7 @@
 import puppeteer from 'puppeteer';
 import express from 'express';
 import axios from 'axios';
+import { exec } from 'child_process';
 
 const app = express();
 const port = process.env.PORT || 5000;  // Usar el puerto dinámico proporcionado por Render
@@ -31,7 +32,6 @@ const requiredFields = [
 const getSysAidCookies = async () => {
     const browser = await puppeteer.launch({
         headless: true,
-        executablePath: '/usr/bin/chromium-browser', 
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
     const page = await browser.newPage();
@@ -99,6 +99,16 @@ const extractFields = (data) => {
         return extracted;
     });
 };
+
+// Ruta para verificar si Chromium está instalado
+app.get('/check-chromium', (req, res) => {
+    exec('which chromium || which chromium-browser', (err, stdout, stderr) => {
+        if (err || stderr) {
+            return res.status(500).json({ error: 'Chromium no está instalado en el sistema.' });
+        }
+        res.json({ chromiumPath: stdout.trim() || 'Chromium no encontrado en las rutas estándar' });
+    });
+});
 
 // Ruta raíz para comprobar que el servidor funciona
 app.get('/', (req, res) => {
